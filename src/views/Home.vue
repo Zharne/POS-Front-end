@@ -3,6 +3,7 @@
     <header class="jumbotron">
       <h3>{{content}}</h3>
     </header>
+    <!-- <img src=url("")> -->
   </div>
 </template>
 <script>
@@ -29,3 +30,6 @@ export default {
   }
 };
 </script>
+<style scoped>
+
+</style>

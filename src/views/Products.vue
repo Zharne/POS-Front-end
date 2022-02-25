@@ -62,7 +62,7 @@
         </div>
         <div class="d-flex w-25 ms-3">
             <label for="" class="form-label">Sort price</label>
-            <select class="form-select" name="" id="sortPrice" onchange="sortPrice()">
+            <select class="form-select" name="" id="sortPrice" onchange="sortPrice()"> 
                 <option value="ascending">Ascending</option>
                 <option value="descending">Descending</option>
             </select>
