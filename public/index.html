@@ -6,12 +6,88 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+
+
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                      Add product
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div class="mb-3">
+                      <label for="addTitle" class="form-label">Title</label>
+                      <input class="form-control" type="text" name="addTitle" id="addTitle" />
+                  </div>
+                  <div class="mb-3">
+                      <label for="" class="form-label">Category</label>
+                      <select class="form-select" name="addCategory" id="addCategory">
+                          <option value="Self Help">Self Help</option>
+                          <option value="Autobiography">Autobiography</option>
+                          <option value="Investing">Investing</option>
+                          <option value="Textbook">Textbook</option>
+                      </select>
+                  </div>
+                  <div class="mb-3">
+                      <label for="addPrice" class="form-label">Price</label>
+                      <input class="form-control" type="text" name="addPrice" id="addPrice" />
+                  </div>
+                  <div class="mb-3">
+                      <label for="addImg" class="form-label">Image URL</label>
+                      <input class="form-control" type="text" name="addImg" id="addImg" />
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                      Close
+                  </button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="createProduct()">
+                      Create Product
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="container d-flex justify-content-end mb-3 mt-5 pt-4">
+      <div class="d-flex w-25 ms-3">
+          <label for="" class="form-label">Sort by category</label>
+          <select class="form-select" name="" id="sortCategory" onchange="sortCategory()">
+              <option value="All">All</option>
+              <option value="Self Help">Self Help</option>
+              <option value="Autobiography">Autobiography</option>
+              <option value="Investing">Investing</option>
+              <option value="Textbook">Textbook</option>
+          </select>
+      </div>
+      <div class="d-flex w-25 ms-3">
+          <label for="" class="form-label">Sort name</label>
+          <select class="form-select" name="" id="sortName" onchange="sortName()">
+              <option value="ascending">Ascending</option>
+              <option value="descending">Descending</option>
+          </select>
+      </div>
+      <div class="d-flex w-25 ms-3">
+          <label for="" class="form-label">Sort price</label>
+          <select class="form-select" name="" id="sortPrice" onchange="sortPrice()">
+              <option value="ascending">Ascending</option>
+              <option value="descending">Descending</option>
+          </select>
+      </div>
+  </div>
+  <div id="products" class="container d-flex mb-3"></div>
+
+    <script src="../src/models/products.js"></script>
     <!-- built files will be auto injected -->
   </body>
 </html>

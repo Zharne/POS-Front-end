@@ -63,15 +63,15 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push("/profile");
+      this.$router.push("/Profile");
     }
   },
   methods: {
     handleLogin(user) {
       this.loading = true;
-      this.$store.dispatch("auth/login", user).then(
+      this.$store.dispatch("auth/Login", user).then(
         () => {
-          this.$router.push("/profile");
+          this.$router.push("/Profile");
         },
         (error) => {
           this.loading = false;
