@@ -32,6 +32,12 @@ const routes = [
     component: Cart
   },
   {
+    path: "/products",
+    name: "products",
+    // lazy-loaded
+    component: BoardUser,
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

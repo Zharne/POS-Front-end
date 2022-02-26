@@ -109,6 +109,18 @@ const routes = [
     // lazy-loaded
     component: BoardUser,
   },
+  {
+    path: "/cart",
+    name: "cart",
+    // lazy-loaded
+    component: BoardUser,
+  },
+  {
+    path: "/products",
+    name: "products",
+    // lazy-loaded
+    component: BoardUser,
+  },
 ];
 const router = createRouter({
   history: createWebHistory(),
