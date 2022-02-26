@@ -6,6 +6,13 @@
 </template>
 
 <script>
+
+//   export default {
+//   components: {
+//     export cart to home
+//   }
+// }
+
     const cart = JSON.parse(localStorage.getItem("cart"))
   ? JSON.parse(localStorage.getItem("cart"))
   : [];
