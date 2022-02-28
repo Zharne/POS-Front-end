@@ -1,19 +1,21 @@
 <template>
-  <div id="nav">
+  <!-- <div id="nav"> -->
     <Navbar/>
+    <main>
     <Home/>
-    <Products/>
-    
-  </div>
+    <Register/>
+    </main>
+
 </template>
 <script>
 import Navbar from "@/components/Navbar.vue"
 import Home from "@/views/Home.vue"
-import Products from "@/views/Products.vue"
+
 
 export default {
+  name: 'App',
   components: {
-    Navbar, Home, Products
+    Navbar, Home
   }
 }
 </script>

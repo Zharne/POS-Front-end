@@ -45,9 +45,8 @@ function readCart(cart) {
               </div>
               <div class="d-flex mb-3 justify-content-between">
                 <label class="form-label">Quantity:</label>
-                <input type="number" min=1 id="remove${position}" value=${
-      product.qty
-    } onchange="updateCart(${position})" />
+                <input type="number" min=1 id="remove${position}"
+                 value=${product.qty} onchange="updateCart(${position})" />
               </div>
               <div class="card-footer bg-white d-flex justify-content-between  p-0 pt-3">
                 <p>Total Cost: </p>

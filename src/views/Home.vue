@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
-    <header class="jumbotron">
-      <h3>{{content}}</h3>
-    </header>
-    <!-- <img src=url("")> -->
-  </div>
+ <div class='container'>
+   <div class='home' style="background-color:red">
+    <h1>what is this</h1>
+    <!-- <img src=url(https://i.postimg.cc/VkVQCFtv/sneaker-lace.png)> -->
+   </div>
+ </div>
 </template>
 <script>
 import UserService from '../services/user.service';

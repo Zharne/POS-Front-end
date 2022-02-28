@@ -1,32 +1,27 @@
 <template>
-  <body>
-	<section>
+	<section class="the">
 		<div class="container1">
+      <!-- <div v-for = "product in products" :key="product.id" class="product"> -->
 			<div class="card">
 				<div class="content">
 					<div class="imgBx">
-						<img src="https://image.flaticon.com/icons/png/256/4213/4213732.png">
+						<img src="https://i.postimg.cc/wBBwzK4b/wengang-zhai-f-OL6ebf-ECQ-unsplash.jpg">
 					</div>
 					<div class="contentBx">
 						<h3>Lion<br><span>Happy Birthday</span></h3>
 					</div>
 				</div>
 				<ul class="sci">
-					<li>
-						<a href="">happy</a>
-					</li>
-					<li>
-						<a href="">birth</a>
-					</li>
-					<li>
-						<a href="">day</a>
-					</li>
+					<!-- <div class="card-content">
+							<h3>{{products.title}}</h3>
+							<p>{{products.details}}</p>
+					</div> -->
 				</ul>
 			</div>
-			<div class="card">
+			<!-- <div class="card">
 				<div class="content">
 					<div class="imgBx">
-						<img src="https://image.flaticon.com/icons/png/256/4213/4213736.png">
+						<img src="https://i.postimg.cc/fRnCVt2X/nikita-kachanovsky-ad-0w-MHtvl-U-unsplash.jpg">
 					</div>
 					<div class="contentBx">
 						<h3>Frog<br><span>Happy Birthday</span></h3>
@@ -47,7 +42,7 @@
 			<div class="card">
 				<div class="content">
 					<div class="imgBx">
-						<img src="https://image.flaticon.com/icons/png/256/4213/4213641.png">
+						<img src="https://i.postimg.cc/ncvRYGQT/artem-bondarchuk-XPBYi4-K8v-FI-unsplash.jpg">
 					</div>
 					<div class="contentBx">
 						<h3>Giraffe<br><span>Happy Birthday</span></h3>
@@ -64,27 +59,36 @@
 						<a href="">day</a>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
+    <!-- </div> -->
 	</section>
-</body>
 </template>
 
 <script>
-export default {
-  setup() {
-    
+export default { 
+  data() {
+    return {
+      products: []
+    }
   },
+  //fetch data from database
+  mounted() {
+    fetch()
+      .then(res => res.json())
+      .then(data => this.products = data)
+      .console.log(data, this.products);
+  }
 }
 </script>
 
 <style scoped>
-  body {
+  .the {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	background: #161616;
+	background: white;
 	min-height: 100vh;
 }
 .container1 {
@@ -103,7 +107,7 @@ export default {
 	height: 400px;
 	background: rgba(255, 255, 255, 0.05);
 	margin: 20px;
-	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 15px 35px rgba(95, 91, 91, 0.5);
 	border-radius: 15px;
 	display: flex;
 	justify-content: center;

@@ -4,6 +4,7 @@ import Profile from '../components/Profile.vue'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
 import Cart from '../components/Cart.vue'
+import Products from '../views/Products.vue'
 
 const routes = [
   {
@@ -32,10 +33,11 @@ const routes = [
     component: Cart
   },
   {
-    path: "/products",
-    name: "products",
+    path: "/Products",
+    name: "Products",
     // lazy-loaded
-    component: BoardUser,
+    // component: BoardUser,
+    component: Products
   },
   {
     path: '/about',
