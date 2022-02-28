@@ -1,380 +1,183 @@
 <template>
-  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        Add product
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="addTitle" class="form-label">Title</label>
-                        <input class="form-control" type="text" name="addTitle" id="addTitle" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="form-label">Category</label>
-                        <select class="form-select" name="addCategory" id="addCategory">
-                            <option value="Self Help">Self Help</option>
-                            <option value="Autobiography">Autobiography</option>
-                            <option value="Investing">Investing</option>
-                            <option value="Textbook">Textbook</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="addPrice" class="form-label">Price</label>
-                        <input class="form-control" type="text" name="addPrice" id="addPrice" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="addImg" class="form-label">Image URL</label>
-                        <input class="form-control" type="text" name="addImg" id="addImg" />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="createProduct()">
-                        Create Product
-                    </button>
-                </div>
-            </div>
-        </div>
-  
-
-    <div class="container d-flex justify-content-end mb-3 mt-5 pt-4">
-        <div class="d-flex w-25 ms-3">
-            <label for="" class="form-label">Sort by category</label>
-            <select class="form-select" name="" id="sortCategory" onchange="sortCategory()">
-                <option value="All">All</option>
-                <option value="Self Help">Self Help</option>
-                <option value="Autobiography">Autobiography</option>
-                <option value="Investing">Investing</option>
-                <option value="Textbook">Textbook</option>
-            </select>
-        </div>
-        <div class="d-flex w-25 ms-3">
-            <label for="" class="form-label">Sort name</label>
-            <select class="form-select" name="" id="sortName" onchange="sortName()">
-                <option value="ascending">Ascending</option>
-                <option value="descending">Descending</option>
-            </select>
-        </div>
-        <div class="d-flex w-25 ms-3">
-            <label for="" class="form-label">Sort price</label>
-            <select class="form-select" name="" id="sortPrice" onchange="sortPrice()"> 
-                <option value="ascending">Ascending</option>
-                <option value="descending">Descending</option>
-            </select>
-        </div>
-    </div>
-    <div id="products" class="container d-flex mb-3"></div>
+  <body>
+	<section>
+		<div class="container1">
+			<div class="card">
+				<div class="content">
+					<div class="imgBx">
+						<img src="https://image.flaticon.com/icons/png/256/4213/4213732.png">
+					</div>
+					<div class="contentBx">
+						<h3>Lion<br><span>Happy Birthday</span></h3>
+					</div>
+				</div>
+				<ul class="sci">
+					<li>
+						<a href="">happy</a>
+					</li>
+					<li>
+						<a href="">birth</a>
+					</li>
+					<li>
+						<a href="">day</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card">
+				<div class="content">
+					<div class="imgBx">
+						<img src="https://image.flaticon.com/icons/png/256/4213/4213736.png">
+					</div>
+					<div class="contentBx">
+						<h3>Frog<br><span>Happy Birthday</span></h3>
+					</div>
+				</div>
+				<ul class="sci">
+					<li>
+						<a href="">happy</a>
+					</li>
+					<li>
+						<a href="">birth</a>
+					</li>
+					<li>
+						<a href="">day</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card">
+				<div class="content">
+					<div class="imgBx">
+						<img src="https://image.flaticon.com/icons/png/256/4213/4213641.png">
+					</div>
+					<div class="contentBx">
+						<h3>Giraffe<br><span>Happy Birthday</span></h3>
+					</div>
+				</div>
+				<ul class="sci">
+					<li>
+						<a href="">happy</a>
+					</li>
+					<li>
+						<a href="">birth</a>
+					</li>
+					<li>
+						<a href="">day</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</body>
 </template>
 
 <script>
-let products = JSON.parse(localStorage.getItem("products"))
-  ? JSON.parse(localStorage.getItem("products"))
-  : [
-      {
-        title: "Atomic Habits",
-        category: "Self Help",
-        price: 400,
-        img: "https://i.postimg.cc/wBjm50j1/atomic-habits.jpg",
-      },
-      {
-        title: "Auto Biography of Malcom X",
-        category: "Autobiography",
-        price: 500,
-        img: "https://i.postimg.cc/xd2s0r5W/malcolm.jpg",
-      },
-      {
-        title: "Rich Dad Poor Dad",
-        category: "Investing",
-        price: 200,
-        img: "https://i.postimg.cc/Pfpy5mxY/rich.jpg",
-      },
-      {
-        title: "Cognitive Psychology",
-        category: "Textbook",
-        price: 700,
-        img: "https://i.postimg.cc/fypKp1kq/psychology.jpg",
-      },
-      {
-        title: "The 5am Club",
-        category: "Self Help",
-        price: 400,
-        img: "https://i.postimg.cc/MpnFMJJx/5am-club.jpg",
-      },
-      {
-        title: "Principles of Management Accounting",
-        category: "Textbook",
-        price: 470,
-        img: "https://i.postimg.cc/xdyyq68n/acc-text.jpg",
-      },
-    ];
-
-let cart = JSON.parse(localStorage.getItem("cart"))
-  ? JSON.parse(localStorage.getItem("cart"))
-  : [];
-
-// READ
-function readProducts(products) {
-  document.querySelector("#products").innerHTML = "";
-  products.forEach((product, position) => {
-    document.querySelector("#products").innerHTML += `
-      <div class="card">
-        <img src="${product.img}" class="card-img-top" alt="${product.title}">
-        <div class="card-body">
-          <h5 class="card-title">${product.title}</h5>
-          <p class="card-text">R${product.price}</p>
-          <div class="d-flex mb-3">
-            <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
-            <button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})"><i class="fas fa-cart-plus"></i></button>
-          </div>
-          
-          
-          
-          </div>
-          <div class="d-flex justify-content-end card-footer">
-            <button type="button" class="btn btn-warning w-50" data-bs-toggle="modal" data-bs-target="#editProduct${position}" >
-              Edit
-            </button>
-            <button type="button" class="btn btn-danger w-50 ms-3" onclick="deleteProduct(${position})" >
-              Delete
-            </button>
-          </div>
-      </div>
-
-
-      <div
-                class="modal fade"
-                id="editProduct${position}"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Edit ${product.title}
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="mb-3">
-                        <label for="editTitle${position}" class="form-label">Title</label>
-                        <input
-                          class="form-control"
-                          type="text"
-                          name="editTitle${position}"
-                          id="editTitle${position}"
-                          value="${product.title}"
-                        />
-                      </div>
-                      <div class="mb-3">
-                        <label for="editCategory${position}" class="form-label">Category</label>
-                        <select
-                          class="form-select"
-                          name="editCategory${position}"
-                          id="editCategory${position}"
-                        >
-                          <option value="Self Help">Self Help</option>
-                          <option value="Autobiography">Autobiography</option>
-                          <option value="Investing">Investing</option>
-                          <option value="Textbook">Textbook</option>
-                        </select>
-                      </div>
-                      <div class="mb-3">
-                        <label for="editPrice${position}" class="form-label">Price</label>
-                        <input
-                          class="form-control"
-                          type="text"
-                          name="editPrice${position}"
-                          id="editPrice${position}"
-                          value="${product.price}"
-                        />
-                      </div>
-                      <div class="mb-3">
-                        <label for="editImg${position}" class="form-label">Image URL</label>
-                        <input
-                          class="form-control"
-                          type="text"
-                          name="editImg${position}"
-                          id="editImg${position}"
-                          value="${product.img}"
-                        />
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        onclick="updateProduct(${position})"
-                      >
-                        Save changes
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    `;
-  });
+export default {
+  setup() {
+    
+  },
 }
-
-readProducts(products);
-showCartBadge();
-
-// CREATE
-function createProduct() {
-  let title = document.querySelector("#addTitle").value;
-  let category = document.querySelector("#addCategory").value;
-  let price = document.querySelector("#addPrice").value;
-  let img = document.querySelector("#addImg").value;
-
-  try {
-    if (!title || !price || !img) throw new Error("Please fill in all fields");
-    products.push({
-      title,
-      category,
-      price,
-      img,
-    });
-    localStorage.setItem("products", JSON.stringify(products));
-    readProducts(products);
-  } catch (err) {
-    alert(err);
-  }
-}
-
-// UPDATE
-function updateProduct(position) {
-  let title = document.querySelector(`#editTitle${position}`).value;
-  let category = document.querySelector(`#editCategory${position}`).value;
-  let price = document.querySelector(`#editPrice${position}`).value;
-  let img = document.querySelector(`#editImg${position}`).value;
-
-  try {
-    if (!title || !price || !img) throw new Error("Please fill in all fields");
-    products[position] = {
-      title,
-      category,
-      price,
-      img,
-    };
-    localStorage.setItem("products", JSON.stringify(products));
-    readProducts(products);
-  } catch (err) {
-    alert(err);
-  }
-}
-
-// DELETE
-function deleteProduct(position) {
-  let confirmation = confirm(
-    "Are you sure you want to delete the selected product?"
-  );
-
-  if (confirmation) {
-    products.splice(position, 1);
-    localStorage.setItem("products", JSON.stringify(products));
-    readProducts(products);
-  }
-}
-
-// ADD TO CART
-function addToCart(position) {
-  let qty = document.querySelector(`#addToCart${position}`).value;
-  let added = false;
-  cart.forEach((product) => {
-    if (product.title == products[position].title) {
-      alert(
-        `You have successfully added ${qty} ${products[position].title} to the cart`
-      );
-      product.qty = parseInt(product.qty) + parseInt(qty);
-      added = true;
-    }
-  });
-  if (!added) {
-    cart.push({ ...products[position], qty });
-    alert(
-      `You have successfully added ${qty} ${products[position].title} to the cart`
-    );
-  }
-
-  showCartBadge();
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-// Update Cart Badge
-function showCartBadge() {
-  document.querySelector("#badge").innerHTML = cart ? cart.length : "";
-}
-
-// SORT BY CATEGORY
-function sortCategory() {
-  let category = document.querySelector("#sortCategory").value;
-
-  if (category == "All") {
-    return readProducts(products);
-  }
-
-  let foundProducts = products.filter((product) => {
-    return product.category == category;
-  });
-
-  readProducts(foundProducts);
-  console.log(foundProducts);
-}
-
-// SORT BY NAME
-
-function sortName() {
-  let direction = document.querySelector("#sortName").value;
-
-  let sortedProducts = products.sort((a, b) => {
-    if (a.title.toLowerCase() < b.title.toLowerCase()) {
-      return -1;
-    }
-    if (a.title.toLowerCase() > b.title.toLowerCase()) {
-      return 1;
-    }
-    return 0;
-  });
-  if (direction == "descending") sortedProducts.reverse();
-  console.log(sortedProducts);
-  readProducts(products);
-}
-
-// SORT BY PRICE
-
-function sortPrice() {
-  let direction = document.querySelector("#sortPrice").value;
-
-  let sortedProducts = products.sort((a, b) => a.price - b.price);
-
-  console.log(sortedProducts);
-
-  if (direction == "descending") sortedProducts.reverse();
-  readProducts(sortedProducts);
-}
-
 </script>
 
-<style>
-  
+<style scoped>
+  body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	background: #161616;
+	min-height: 100vh;
+}
+.container1 {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 40px 0;
+}
+
+.container1 .card {
+	position: relative;
+	width: 300px;
+	height: 400px;
+	background: rgba(255, 255, 255, 0.05);
+	margin: 20px;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(10px);
+}
+
+.container1 .card .content {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transition: 0.5s;
+}
+
+.container1 .card:hover .content {
+	transform: translateY(-20px);
+}
+
+.container1 .card .content .imgBx {
+	position: relative;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
+
+.container1 .card .content .imgBx img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.container1 .card .content .contentBx h3 {
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 500;
+	font-size: 18px;
+	text-align: center;
+	margin: 20px 0 10px;
+	line-height: 1.1em;
+}
+
+.container1 .card .content .contentBx h3 span {
+	font-size: 12px;
+	font-weight: 300;
+	text-transform: initial;
+}
+
+.container1 .card .sci {
+	position: absolute;
+	bottom: 50px;
+	display: flex;
+}
+
+.container1 .card .sci li {
+	list-style: none;
+	margin: 0 10px;
+	transform: translateY(40px);
+	transition: 0.5s;
+	opacity: 0;
+}
+
+.container1 .card:hover .sci li {
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+.container1 .card .sci li a {
+	color: #fff;
+	font-size: 20px;
+}
 </style>
