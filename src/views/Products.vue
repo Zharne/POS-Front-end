@@ -13,55 +13,13 @@
 				</div>
 				<ul class="sci">
 					<!-- <div class="card-content">
-							<h3>{{products.title}}</h3>
-							<p>{{products.details}}</p>
+							<h3>{{products.description}}</h3>
+							<p>{{products.size}}</p>
+							<p>{{products.color}}</p>
 					</div> -->
 				</ul>
 			</div>
-			<!-- <div class="card">
-				<div class="content">
-					<div class="imgBx">
-						<img src="https://i.postimg.cc/fRnCVt2X/nikita-kachanovsky-ad-0w-MHtvl-U-unsplash.jpg">
-					</div>
-					<div class="contentBx">
-						<h3>Frog<br><span>Happy Birthday</span></h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<li>
-						<a href="">happy</a>
-					</li>
-					<li>
-						<a href="">birth</a>
-					</li>
-					<li>
-						<a href="">day</a>
-					</li>
-				</ul>
-			</div>
-			<div class="card">
-				<div class="content">
-					<div class="imgBx">
-						<img src="https://i.postimg.cc/ncvRYGQT/artem-bondarchuk-XPBYi4-K8v-FI-unsplash.jpg">
-					</div>
-					<div class="contentBx">
-						<h3>Giraffe<br><span>Happy Birthday</span></h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<li>
-						<a href="">happy</a>
-					</li>
-					<li>
-						<a href="">birth</a>
-					</li>
-					<li>
-						<a href="">day</a>
-					</li>
-				</ul>
-			</div> -->
 		</div>
-    <!-- </div> -->
 	</section>
 </template>
 
