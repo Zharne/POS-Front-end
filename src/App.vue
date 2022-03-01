@@ -2,8 +2,7 @@
   <!-- <div id="nav"> -->
     <Navbar/>
     <main>
-    <Home/>
-    <Register/>
+      <router-view />
     </main>
 
 </template>

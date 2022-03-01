@@ -1,10 +1,6 @@
 <template>
- <div class='container'>
-   <div class='home' style="background-color:red">
-    <h1>what is this</h1>
-    <!-- <img src=url(https://i.postimg.cc/VkVQCFtv/sneaker-lace.png)> -->
+   <div class='back'>
    </div>
- </div>
 </template>
 <script>
 import UserService from '../services/user.service';
@@ -31,5 +27,12 @@ export default {
 };
 </script>
 <style scoped>
-
+.back{
+  height: 90vh;
+  margin-top: 4%;
+  background-image: url(https://i.postimg.cc/7YYTNxTW/sneakerlogo.jpg);
+  background-repeat: no-repeat;
+  margin-left:30%;
+  
+}
 </style>

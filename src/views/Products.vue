@@ -1,24 +1,27 @@
 <template>
 	<section class="the">
 		<div class="container1">
-      <!-- <div v-for = "product in products" :key="product.id" class="product"> -->
+      	<div v-for ="product in products" :key="product._id" class="product">
 			<div class="card">
 				<div class="content">
-					<div class="imgBx">
+					<!-- <div class="imgBx">
 						<img src="https://i.postimg.cc/wBBwzK4b/wengang-zhai-f-OL6ebf-ECQ-unsplash.jpg">
-					</div>
-					<div class="contentBx">
-						<h3>Lion<br><span>Happy Birthday</span></h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<!-- <div class="card-content">
-							<h3>{{products.description}}</h3>
-							<p>{{products.size}}</p>
-							<p>{{products.color}}</p>
 					</div> -->
+					<!-- <div class="contentBx"> -->
+						<!-- <h3>Lion<br><span>Happy Birthday</span></h3> -->
+					<!-- </div> -->
+				<ul class="sci">
+					<div class="card-content">
+						<img :src="product.img">
+							<h3>{{product.description}}</h3>
+							<p>{{product.name}}</p>
+							<p>{{product.price}}</p>
+					</div>
 				</ul>
+				</div>
+				
 			</div>
+		</div>
 		</div>
 	</section>
 </template>
@@ -32,15 +35,19 @@ export default {
   },
   //fetch data from database
   mounted() {
-    fetch()
+    fetch("https://pointos-backend.herokuapp.com/products")
       .then(res => res.json())
       .then(data => this.products = data)
-      .console.log(data, this.products);
+      .catch((err) => console.log(err.message));
   }
 }
 </script>
 
 <style scoped>
+img{
+	height: 100px;
+	width: 100px;
+}
   .the {
 	display: flex;
 	justify-content: center;
@@ -80,6 +87,7 @@ export default {
 	align-items: center;
 	flex-direction: column;
 	transition: 0.5s;
+	margin-top: 300px;
 }
 
 .container1 .card:hover .content {
