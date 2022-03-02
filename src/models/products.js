@@ -14,7 +14,7 @@ function readProducts(products) {
       <div class="card">
         <img src="${product.img}" class="card-img-top" alt="${product.name}">
         <div class="card-body">
-          <h5 class="card-title">${product.name}</h5>
+          <h5 class="card-Name">${product.name}</h5>
           <p class="card-text">R${product.price}</p>
           <div class="d-flex mb-3">
             <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
@@ -45,7 +45,7 @@ function readProducts(products) {
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
+                      <h5 class="modal-Name" id="exampleModalLabel">
                         Edit ${product.name}
                       </h5>
                       <button
@@ -57,12 +57,12 @@ function readProducts(products) {
                     </div>
                     <div class="modal-body">
                       <div class="mb-3">
-                        <label for="editTitle${position}" class="form-label">Name</label>
+                        <label for="editName${position}" class="form-label">Name</label>
                         <input
                           class="form-control"
                           type="text"
-                          name="editTitle${position}"
-                          id="editTitle${position}"
+                          name="editName${position}"
+                          id="editName${position}"
                           value="${product.name}"
                         />
                       </div>
@@ -130,15 +130,15 @@ showCartBadge();
 // CREATE
 function createProduct() {
   let Name = document.querySelector("#addName").value;
-//   let category = document.querySelector("#addCategory").value;
+//   let description = document.querySelector("#addCategory").value;
   let price = document.querySelector("#addPrice").value;
   let img = document.querySelector("#addImg").value;
 
   try {
-    if (!title || !price || !img) throw new Error("Please fill in all fields");
+    if (!Name || !price || !img) throw new Error("Please fill in all fields");
     products.push({
-      title,
-      category,
+      Name,
+      description,
       price,
       img,
     });
@@ -151,16 +151,16 @@ function createProduct() {
 
 // UPDATE
 function updateProduct(position) {
-  let title = document.querySelector(`#editTitle${position}`).value;
-  let category = document.querySelector(`#editCategory${position}`).value;
+  let Name = document.querySelector(`#editName${position}`).value;
+  let description = document.querySelector(`#editCategory${position}`).value;
   let price = document.querySelector(`#editPrice${position}`).value;
   let img = document.querySelector(`#editImg${position}`).value;
 
   try {
-    if (!title || !price || !img) throw new Error("Please fill in all fields");
+    if (!Name || !price || !img) throw new Error("Please fill in all fields");
     products[position] = {
-      title,
-      category,
+      Name,
+      description,
       price,
       img,
     };
@@ -189,9 +189,9 @@ function addToCart(position) {
   let qty = document.querySelector(`#addToCart${position}`).value;
   let added = false;
   cart.forEach((product) => {
-    if (product.title == products[position].title) {
+    if (product.Name == products[position].Name) {
       alert(
-        `You have successfully added ${qty} ${products[position].title} to the cart`
+        `You have successfully added ${qty} ${products[position].Name} to the cart`
       );
       product.qty = parseInt(product.qty) + parseInt(qty);
       added = true;
@@ -200,7 +200,7 @@ function addToCart(position) {
   if (!added) {
     cart.push({ ...products[position], qty });
     alert(
-      `You have successfully added ${qty} ${products[position].title} to the cart`
+      `You have successfully added ${qty} ${products[position].Name} to the cart`
     );
   }
 
@@ -216,14 +216,14 @@ function showCartBadge() {
 
 // SORT BY CATEGORY
 function sortCategory() {
-  let category = document.querySelector("#sortCategory").value;
+  let description = document.querySelector("#sortCategory").value;
 
-  if (category == "All") {
+  if (description == "All") {
     return readProducts(products);
   }
 
   let foundProducts = products.filter((product) => {
-    return product.category == category;
+    return product.description == description;
   });
 
   readProducts(foundProducts);
@@ -232,32 +232,32 @@ function sortCategory() {
 
 // SORT BY NAME
 
-function sortName() {
-  let direction = document.querySelector("#sortName").value;
+// function sortName() {
+//   let direction = document.querySelector("#sortName").value;
 
-  let sortedProducts = products.sort((a, b) => {
-    if (a.title.toLowerCase() < b.title.toLowerCase()) {
-      return -1;
-    }
-    if (a.title.toLowerCase() > b.title.toLowerCase()) {
-      return 1;
-    }
-    return 0;
-  });
-  if (direction == "descending") sortedProducts.reverse();
-  console.log(sortedProducts);
-  readProducts(products);
-}
+//   let sortedProducts = products.sort((a, b) => {
+//     if (a.Name.toLowerCase() < b.Name.toLowerCase()) {
+//       return -1;
+//     }
+//     if (a.Name.toLowerCase() > b.Name.toLowerCase()) {
+//       return 1;
+//     }
+//     return 0;
+//   });
+//   if (direction == "descending") sortedProducts.reverse();
+//   console.log(sortedProducts);
+//   readProducts(products);
+// }
 
 // SORT BY PRICE
 
-function sortPrice() {
-  let direction = document.querySelector("#sortPrice").value;
+// function sortPrice() {
+//   let direction = document.querySelector("#sortPrice").value;
 
-  let sortedProducts = products.sort((a, b) => a.price - b.price);
+//   let sortedProducts = products.sort((a, b) => a.price - b.price);
 
-  console.log(sortedProducts);
+//   console.log(sortedProducts);
 
-  if (direction == "descending") sortedProducts.reverse();
-  readProducts(sortedProducts);
-}
+//   if (direction == "descending") sortedProducts.reverse();
+//   readProducts(sortedProducts);
+// }

@@ -16,6 +16,18 @@
 							<h3>{{product.description}}</h3>
 							<p>{{product.name}}</p>
 							<p>{{product.price}}</p>
+						<div class="d-flex mb-3">
+							<input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
+							<button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})"><i class="fas fa-cart-plus"></i></button>
+						</div>
+						<div class="d-flex justify-content-end card-footer">
+							<button type="button" class="btn btn-warning w-50" data-bs-toggle="modal" data-bs-target="#editProduct${position}" >
+							Edit
+							</button>
+							<button type="button" class="btn btn-danger w-70 ms-3" onclick="deleteProduct(${position})" >
+							Delete
+							</button>
+						</div>	
 					</div>
 				</ul>
 				</div>
@@ -87,7 +99,7 @@ img{
 	align-items: center;
 	flex-direction: column;
 	transition: 0.5s;
-	margin-top: 300px;
+	margin-top: 500px;
 }
 
 .container1 .card:hover .content {
