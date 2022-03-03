@@ -1,168 +1,379 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">The BOOKSTORE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0 mr-auto">
-                    <li class="nav-item">
-                        <a class="btn btn-primary me-3" aria-current="page" href="./">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary active position-relative" href="./">Cart
-                            <span id="badge"
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span></a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+  <div class="heading">
+    <h1>
+      <span class="shopper">s</span> Shopping Cart
+    </h1>
+    
+    <a href="#" class="visibility-cart transition is-open">X</a>    
+  </div>
+  
+  <div class="cart transition is-open">
+    
+    <a href="#" class="btn btn-update">Update cart</a>
+    
+    
+    <div class="table">
+      
+      <div class="layout-inline row th">
+        <div class="col col-pro">Product</div>
+        <div class="col col-price align-center "> 
+          Price
         </div>
-    </nav>
-    <div class="container mt-5 pt-4">
-        <div id="cart"></div>
-        <div id="cart-footer" class="d-flex justify-content-between align-items-center mb-3"></div>
-    </div>
+        <div class="col col-qty align-center">QTY</div>
+        <div class="col">VAT</div>
+        <div class="col">Total</div>
+      </div>
+      
+      <div class="layout-inline row">
+        
+        <div class="col col-pro layout-inline">
+          <img src="" alt="kitten" />
+          <p>Happy Little Critter</p>
+        </div>
+        
+        <div class="col col-price col-numeric align-center ">
+          <p>R</p>
+        </div>
+
+        <div class="col col-qty layout-inline">
+          <a href="#" class="qty qty-minus">-</a>
+            <input type="numeric" value="3" />
+          <a href="#" class="qty qty-plus">+</a>
+        </div>
+        
+        <div class="col col-vat col-numeric">
+          <p>R</p>
+        </div>
+        <div class="col col-total col-numeric">               
+          <p> R1 500</p>
+        </div>
+      </div>
+      
+      <div class="layout-inline row row-bg2">
+
+        <div class="col col-pro layout-inline">
+          <img src="" alt="kitten" />
+          <p>Scared Little Kittie</p>
+        </div>
+        
+        <div class="col col-price col-numeric align-center ">
+          <p>R</p>
+        </div>
+
+        <div class="col col-qty  layout-inline">
+          <a href="#" class="qty qty-minus ">-</a>
+            <input type="numeric" value="1" />
+          <a href="#" class="qty qty-plus">+</a>
+        </div>
+        
+        <div class="col col-vat col-numeric">
+          <p>R</p>
+        </div>
+        <div class="col col-total col-numeric">
+          <p>R</p>
+        </div>      
+      
+      </div>
+      
+       <div class="layout-inline row">
+        
+        <div class="col col-pro layout-inline">
+          <img src="" alt="kitten" />
+          <p>Curious Little Begger</p>
+        </div>
+        
+        <div class="col col-price col-numeric align-center ">
+          <p>R</p>
+        </div>
+
+        <div class="col col-qty layout-inline">
+          <a href="#" class="qty qty-minus">-</a>
+            <input type="numeric" value="3" />
+          <a href="#" class="qty qty-plus">+</a>
+        </div>
+        
+        <div class="col col-vat col-numeric">
+          <p>R</p>          
+        </div>
+         <div class="col col-total col-numeric">  
+           <p>R</p>
+         </div>         
+      </div>
+  
+       <div class="tf">
+         <div class="row layout-inline">
+           <!-- <div class="col">
+             <p>VAT</p>
+           </div>
+           <div class="col"></div>
+         </div>
+         <div class="row layout-inline">
+           <div class="col">
+             <p>Shipping</p>
+           </div>
+           <div class="col"></div>
+         </div> -->
+          <div class="row layout-inline">
+           <div class="col">
+             <p>Total</p>
+           </div>
+           <div class="col"></div>
+         </div>
+       </div>         
+  </div>
+    
+    <a href="#" class="btn btn-update">Update cart</a>
+  
+</div>
+  </div>
+      </div>
 </template>
 
 <script>
 
-//   export default {
-//   components: {
-//     export cart to home
-//   }
-// }
-
-    const cart = JSON.parse(localStorage.getItem("cart"))
-  ? JSON.parse(localStorage.getItem("cart"))
-  : [];
-
-// READ
-console.log(cart);
-function readCart(cart) {
-  document.querySelector("#cart").innerHTML = "";
-
-  let total = cart
-    .reduce((total, product) => {
-      return total + product.price * product.qty;
-    }, 0)
-    .toFixed(2);
-
-  cart.forEach((product, position) => {
-    // document.querySelector("#cart").innerHTML += `
-    //   <div class="card mb-3 w-100  position-relative" >
-    //   <button type="button" class="position-absolute top-0 start-100 translate-middle badge btn btn-danger" onclick="removeFromCart(${position})">X</button>
-    //     <div class="row g-0">
-    //       <div class="col-md-4">
-    //         <img src="${product.img}" class="img-fluid rounded-start" alt="...">
-    //       </div>
-    //       <div class="col-md-8">
-    //         <div class="card-body d-flex flex-column container">
-    //           <h5 class="card-title mb-3">${product.title}</h5>
-    //           <div class="d-flex mb-3 justify-content-between">
-    //             <p class="card-text">Individual price: </p>
-    //             <span>R${product.price}<span>
-    //           </div>
-    //           <div class="d-flex mb-3 justify-content-between">
-    //             <label class="form-label">Quantity:</label>
-    //             <input type="number" min=1 id="remove${position}"
-    //              value=${product.qty} onchange="updateCart(${position})" />
-    //           </div>
-    //           <div class="card-footer bg-white d-flex justify-content-between  p-0 pt-3">
-    //             <p>Total Cost: </p>
-    //             <span>R${(
-    //               parseFloat(product.price) * parseInt(product.qty)
-    //             ).toFixed(2)}</span>
-    //           </div>
-    //         </div>  
-    //       </div>
-    //     </div>
-    //   </div>
-    // `;
-  });
-  showCartBadge();
-  document.querySelector("#cart-footer").innerHTML += `
-    <h3>Total cost: R${total}</h3>
-    <button class="btn btn-primary btn-lg" onclick="checkout()">
-      Checkout
-    </button>
-  `;
-}
-
-// Update Cart Badge
-function showCartBadge() {
-  document.querySelector("#badge").innerHTML = cart ? cart.length : "";
-}
-
-readCart(cart);
-
-// UPDATE
-function updateCart(position) {
-  let qty = document.querySelector(`#remove${position}`).value;
-  cart[position] = { ...cart[position], qty };
-  localStorage.setItem("cart", JSON.stringify(cart));
-  readCart(cart);
-}
-
-// REMOVE
-function removeFromCart(position) {
-  let confirmation = confirm(
-    "Are you sure you want to remove this product from the cart?"
-  );
-
-  if (confirmation) {
-    cart.splice(position, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    readCart(cart);
+export default {
+  name:"cart"
+    
   }
-}
 
-// CHECKOUT
-function checkout() {
-  let total = cart
-    .reduce((total, product) => {
-      return total + product.price * product.qty;
-    }, 0)
-    .toFixed(2);
-  try {
-    if (parseInt(total) == 0) throw new Error("Nothing in cart");
-    let confirmation = confirm(`Total payment needed: R${total}`);
-
-    if (confirmation) {
-      cart.length = 0;
-      localStorage.removeItem("cart");
-      readCart(cart);
-    }
-  } catch (err) {
-    alert(err);
-  }
-}
 </script>
 
-<style>
-    body {
-    margin-top: 7%;
+
+<style scoped>
+  /* * {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+} */
+
+@font-face {
+    font-family: 'Shopper';
+    src: url('http://www.shopperfont.com/font/Shopper-Std.ttf');
+}
+
+.shopper {
+  text-transform: lowercase;
+  font: 2em 'Shopper', sans-serif;
+  line-height: 0.5em;
+  display: inline-block;
+}
+
+
+
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+
+p {
+  font-size: 1.5em;
+  color: #8a8a8a;
+}
+
+input {
+  border: 0.3em solid #bbc3c6;
+  padding: 0.5em 0.3em; 
+  font-size: 1.4em;
+  color: #8a8a8a;
+  text-align: center;
+}
+
+img {
+  max-width: 9em;
+  width: 100%;
+  overflow: hidden; 
+  margin-right: 1em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 75em;
+  width: 95%;
+  margin: 40px auto;  
+  overflow: hidden;
+  position: relative;
+  
+  border-radius: 0.6em;
+  background: #ecf0f1;
+  box-shadow: 0 0.5em 0 rgba(138, 148, 152, 0.2);
+}
+
+.heading {
+  padding: 1em;
+  position: relative;
+  z-index: 1;
+  color: #f7f7f7;
+  background: #c31f50;
+}
+
+.cart {
+  margin: 2.5em;
+  overflow: hidden;
+}
+
+.cart.is-closed {
+  height: 0;
+  margin-top: -2.5em;
+}
+
+.table {
+  background: #ffffff;
+  border-radius: 0.6em;
+  overflow: hidden;
+  clear: both;
+  margin-bottom: 1.8em;
+}
+
+
+.layout-inline > * {
+  display: inline-block;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.th {
+  background: #c31f50;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.tf {
+  background: #c31f50;
+  text-transform: uppercase;
+  text-align: right;
+  font-size: 1.2em;  
+}
+
+.tf p {
+  color: #fff;
+  font-weight: bold;
+}
+
+.col {
+  padding: 1em;
+  width: 12%;
+}
+
+.col-pro {
+  width: 44%;
+}
+
+.col-pro > * {
+  vertical-align: middle;
+}
+
+.col-qty {
+  text-align: center;
+  width: 17%;
+}
+
+.col-numeric p {
+  font: bold 1.8em helvetica;
+}
+
+.col-total p {
+  color: #12c8b1;
+}
+
+.tf .col {
+  width: 20%;
+}
+
+.row > div {
+  vertical-align: middle;
+}
+
+.row-bg2 {
+  background: #f7f7f7;
+}
+
+.visibility-cart {
+  position: absolute;
+  color: #fff;
+  top: 0.5em;
+  right: 0.5em;
+  font:  bold 2em arial;
+  border: 0.16em solid #fff;
+  border-radius: 2.5em;
+  padding: 0 0.22em 0 0.25em ;
+}
+
+.col-qty > * {
+  vertical-align: middle; 
+}
+
+.col-qty > input {
+  max-width: 2.6em;
+}
+
+
+a.qty {
+  width: 1em;
+  line-height: 1em;
+  border-radius: 2em;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+  background: #43ace3;  
+  color: #fff;
+}
+
+a.qty:hover {
+  background: #3b9ac6;
+}
+
+.btn {
+  padding: 10px 30px;
+  border-radius: 0.3em;
+  font-size: 1.4em;
+  font-weight: bold;
+  background: #43ace3;
+  color: #fff;
+  box-shadow: 0 3px 0 rgba(59,154,198, 1)
+}
+
+.btn:hover {
+  box-shadow: 0 3px 0 rgba(59,154,198, 0)
+}
+
+.btn-update {
+  float: right;
+  margin: 0 0 1.5em 0;
+}
+
+.transition {
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and ( max-width: 755px) {
+  .container {
+    width: 98%;
   }
   
-  #products {
-    flex-wrap: wrap;
-    gap: 20px;
+  .col-pro {
+    width: 35%;
+  }
+  
+  .col-qty {
+    width: 22%;
   }
   
   img {
-    height: 450px !important;
-    object-fit: cover;
+    max-width: 100%;
+    margin-bottom: 1em;
   }
+}
+
+@media screen and ( max-width: 591px) {
   
-  .card {
-    width: calc((100% / 4) - 15px);
-    min-width: 300px;
-  }
-  
-  .card-title {
-    text-transform: capitalize;
-  }
-  
+}
 </style>

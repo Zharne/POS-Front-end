@@ -25,7 +25,7 @@ function readProducts(products) {
           
           </div>
           <div class="d-flex justify-content-end card-footer">
-            <button type="button" class="btn btn-warning w-50" data-bs-toggle="modal" data-bs-target="#editProduct${position}" >
+            <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#editProduct${position}" >
               Edit
             </button>
             <button type="button" class="btn btn-danger w-50 ms-3" onclick="deleteProduct(${position})" >

@@ -1,45 +1,76 @@
 <template>
-   <div class="col-md-4">
-    <div class="card card-container" style="background-color:red">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <Form @submit="handleRegister" :validation-schema="schema">
-        <div v-if="!successful">
-          <div class="form-group">
-            <label for="name">Username</label>
-            <Field name="name" type="text" class="form-control" />
-            <ErrorMessage name="username" class="error-feedback" />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <Field name="email" type="email" class="form-control" />
-            <ErrorMessage name="email" class="error-feedback" />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <Field name="password" type="password" class="form-control" />
-            <ErrorMessage name="password" class="error-feedback" />
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary btn-block" :disabled="loading">
-              <span
-                v-show="loading"
-                class="spinner-border spinner-border-sm"
-              ></span>
-              Sign Up
-            </button>
+  <div class="form-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <Form
+            @submit="handleRegister"
+            :validation-schema="schema"
+            class="form-horizontal"
+          >
+            <span class="heading">Signup</span>
+            <div v-if="!successful">
+              <div class="form-group">
+                <label for="name">Username</label>
+                <Field
+                  name="name"
+                  type="text"
+                  id="inputEmail3"
+                  class="form-control"
+                />
+                <ErrorMessage name="username" class="error-feedback" />
+                <i class="fa fa-user"></i>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <Field name="email" type="email" class="form-control" />
+                <ErrorMessage name="email" class="error-feedback" />
+              </div>
+              <div class="form-group help">
+                <label for="password">Password</label>
+                <Field
+                  name="password"
+                  type="password"
+                  id="inputPassword3"
+                  class="form-control"
+                />
+                <ErrorMessage name="password" class="error-feedback" />
+                <i class="fa fa-lock"></i>
+                <a href="#" class="fa fa-question-circle"></a>
+              </div>
+              <div class="form-group">
+                <div class="main-checkbox">
+                  <input
+                    type="checkbox"
+                    value="None"
+                    id="checkbox1"
+                    name="check"
+                  />
+                  <label for="checkbox1"></label>
+                </div>
+                <span class="text">Remember me</span>
+                <button
+                  type="submit"
+                  class="btn btn-default"
+                  :disabled="loading"
+                >
+                  <span
+                    v-show="loading"
+                    class="spinner-border spinner-border-sm"
+                  ></span>
+                  <span>Signup</span>
+                </button>
+              </div>
+            </div>
+          </Form>
+          <div
+            v-if="message"
+            class="alert"
+            :class="successful ? 'alert-success' : 'alert-danger'"
+          >
+            {{ message }}
           </div>
         </div>
-      </Form>
-      <div
-        v-if="message"
-        class="alert"
-        :class="successful ? 'alert-success' : 'alert-danger'"
-      >
-        {{ message }}
       </div>
     </div>
   </div>
@@ -114,11 +145,4 @@ export default {
     },
   },
 };
-
 </script>
-<style scoped>
-#profile-img{
-	border-radius: 180%
-}
-
-</style>
